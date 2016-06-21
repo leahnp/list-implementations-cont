@@ -19,10 +19,10 @@ class LinkedList
    end
 
    def add(value)
-       if @size == 0
+    if @size == 0
          @head = Node.new(value,nil)
          @size += 1
-       end
+    else
        # Traverse to the end of the list
        # And insert a new node over there with the specified value
        current = @head
@@ -31,11 +31,14 @@ class LinkedList
        end
        current.next_node = Node.new(value,nil)
        @size += 1
+    end
        self
    end
 
    def delete(val)
+    # leave method if array length is 0
        return nil if @size == 0
+       # if you must delete the head, make next node the head
        if @head.value == val
            # If the head is the element to be delete, the head needs to be updated
            @head = @head.next_node
@@ -94,6 +97,34 @@ class LinkedList
        current = current.next_node
      end
      return max
+   end
+
+   def sort
+    return nil if @size == 0
+     max = @head.value
+     current = @head.next_node
+     while current != nil
+       if current.value > max
+         max = current.value
+         delete(max)
+       end
+       current = current.next_node
+     end
+     return max
+   end
+
+   def reverse(node)
+     prev = null
+     n = @head
+     while (n) 
+      # assign pointer to temp
+      temp = n.next_node
+      # assign n point to previous node
+      n.next_node = prev
+      # assign prev var to n to use in next iteration
+      prev = n
+      # iterate to next node
+      n = temp
    end
 
 end

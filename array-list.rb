@@ -52,4 +52,21 @@ class ArrayList
     @size == 0
   end
 
+  def sort
+    # ascending order
+    @storage.sort!
+  end
+
+
+
+  def reverse(array)
+    n = array.length - 1
+    array.each do |i|
+      holder = array[n]
+      array.delete_at(n)
+      array.unshift(holder)
+      n -= 1
+    end
+  end
+
 end
